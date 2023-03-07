@@ -1,29 +1,35 @@
 import { useState } from 'react'
+import type { MouseEventHandler } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { RandomFox } from '../components/RandomFox'
 
 const random = () => Math.floor(Math.random() * 123) + 1
 
+const generateId = () => Math.random().toString(36).substring(2, 15)
+
 type ImageItem = { id: string, url: string }
 
 const Home: NextPage = () => {
   const [images, setImages] = useState<Array<ImageItem>>([
     {
-      id: '1',
+      id: generateId(),
       url: `https://randomfox.ca/images/${random()}.jpg`,
     },
-    {
-
-      id: '2',
-      url: `https://randomfox.ca/images/${random()}.jpg`,
-    },
-    {
-
-      id: '3',
-      url: `https://randomfox.ca/images/${random()}.jpg`,
-    }
   ])
+
+  const onAddNewFox: MouseEventHandler<HTMLButtonElement> = () => {
+    const newImage:ImageItem = {
+      id: generateId(),
+      url: `https://randomfox.ca/images/${random()}.jpg`
+    }
+
+    setImages([
+      ...images,
+      newImage
+    ])
+  }
+
 
   return (
     <div>
@@ -33,10 +39,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col pt-12 items-center">
+      <main className="flex flex-col pt-12 items-center gap-y-4">
         <h1 className="text-4xl font-sans">Hola NextJS</h1>
 
-        <button className="bg-sky-500 p-2 text-white rounded mt-6 hover:bg-sky-700 focus:ring">
+        <button
+          className="bg-sky-500 p-2 text-white rounded mt-6 hover:bg-sky-700 focus:ring"
+          onClick={onAddNewFox}
+        >
           Agregar un nuevo zorro
         </button>
 
