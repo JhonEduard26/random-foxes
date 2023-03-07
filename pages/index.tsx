@@ -1,10 +1,30 @@
+import { useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { RandomFox } from '../components/RandomFox'
 
 const random = () => Math.floor(Math.random() * 123) + 1
 
+type ImageItem = { id: string, url: string }
+
 const Home: NextPage = () => {
+  const [images, setImages] = useState<Array<ImageItem>>([
+    {
+      id: '1',
+      url: `https://randomfox.ca/images/${random()}.jpg`,
+    },
+    {
+
+      id: '2',
+      url: `https://randomfox.ca/images/${random()}.jpg`,
+    },
+    {
+
+      id: '3',
+      url: `https://randomfox.ca/images/${random()}.jpg`,
+    }
+  ])
+
   return (
     <div>
       <Head>
@@ -14,8 +34,17 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex flex-col pt-12 items-center">
-        <h1 className="text-4xl font-bold">Hola NextJS</h1>
-        <RandomFox image={`https://randomfox.ca/images/${random()}.jpg`}/>
+        <h1 className="text-4xl font-sans">Hola NextJS</h1>
+
+        <button className="bg-sky-500 p-2 text-white rounded mt-6 hover:bg-sky-700 focus:ring">
+          Agregar un nuevo zorro
+        </button>
+
+        {
+          images.map(({ id, url }) => (
+            <RandomFox key={id} image={url} />
+          ))
+        }
       </main>
 
       <footer>
