@@ -8,10 +8,8 @@ const random = () => Math.floor(Math.random() * 123) + 1
 
 const generateId = () => Math.random().toString(36).substring(2, 15)
 
-type ImageItem = { id: string, url: string }
-
 const Home: NextPage = () => {
-  const [images, setImages] = useState<Array<ImageItem>>([
+  const [images, setImages] = useState<Array<IFoxImageItem>>([
     {
       id: generateId(),
       url: `https://randomfox.ca/images/${random()}.jpg`,
@@ -19,7 +17,7 @@ const Home: NextPage = () => {
   ])
 
   const onAddNewFox: MouseEventHandler<HTMLButtonElement> = () => {
-    const newImage: ImageItem = {
+    const newImage: IFoxImageItem = {
       id: generateId(),
       url: `https://randomfox.ca/images/${random()}.jpg`
     }
@@ -29,7 +27,6 @@ const Home: NextPage = () => {
       newImage
     ])
   }
-
 
   return (
     <div>
@@ -59,7 +56,9 @@ const Home: NextPage = () => {
                 className="rounded"
                 title="Random fox"
                 onClick={() => console.log('hey')}
-                onLazyLoad={() => console.log('ya cargo!')}
+                onLazyLoad={(img) => {
+                  console.log('Imagen cargada, ', img)
+                }}
               />
             </div>
           ))
