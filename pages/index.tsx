@@ -37,7 +37,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex flex-col pt-12 items-center gap-y-4">
-        <h1 className="text-4xl font-sans">Hola NextJS</h1>
+        <h1 className="text-4xl font-sans">Random Fox Image Generator</h1>
 
         <button
           className="bg-sky-500 p-2 text-white rounded mt-6 hover:bg-sky-700 focus:ring"
