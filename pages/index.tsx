@@ -7,7 +7,6 @@ import { LazyImage } from '../components/LazyImage'
 const random = () => Math.floor(Math.random() * 123) + 1
 
 const generateId = () => Math.random().toString(36).substring(2, 15)
-
 const Home: NextPage = () => {
   const [images, setImages] = useState<Array<IFoxImageItem>>([
     {
@@ -37,10 +36,18 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex flex-col pt-12 items-center gap-y-4">
-        <h1 className="text-4xl font-sans">Random Fox Image Generator</h1>
+        <h1 className="p-2 text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-700 to-amber-700">
+          Random Fox Image Generator ✨
+        </h1>
+
+        <p className="text-center">
+          Esta pagina web genera una imagen aleatoria de zorros
+          <br />
+          las imagenes son lazy loading, solo se cargaran si estan dentro del viewport del navegador.
+        </p>
 
         <button
-          className="bg-sky-500 p-2 text-white rounded mt-6 hover:bg-sky-700 focus:ring"
+          className="bg-sky-700 p-2 text-white rounded mt-6 hover:bg-sky-900"
           onClick={onAddNewFox}
         >
           Agregar un nuevo zorro
@@ -65,7 +72,27 @@ const Home: NextPage = () => {
         }
       </main>
 
-      <footer>
+      <footer className="flex items-center justify-around h-20 mt-8 border-t">
+        <span>
+          JhonEduard26
+        </span>
+        <ul className="flex gap-x-4 p-2">
+          <li>
+            <a href="https://github.com/JhonEduard26" target="_blank">
+              <img width={28} src="./github.png" alt="logo github" />
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/jhon-eduard-bocanegra-ortiz/" target="_blank">
+              <img width={28} src="./linkedin.png" alt="logo linkedin" />
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/JhonBocanegra26" target="_blank">
+              <img width={28} src="./twitter.png" alt="logo twitter" />
+            </a>
+          </li>
+        </ul>
       </footer>
     </div>
   )

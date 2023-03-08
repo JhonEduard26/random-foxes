@@ -20,7 +20,7 @@ Esta pagina web genera una imagen aleatoria de un zorro, las imagenes son lazy l
 ### Links
 
 - Solution URL: [GitHub](https://github.com/JhonEduard26/random-foxes)
-- Live Site URL: [GitHub Pages](https://jhoneduard26.github.io/ecommerce-product-page/)
+- Live Site URL: [Vercel](https://random-foxes.vercel.app/)
 
 ## My process
 
